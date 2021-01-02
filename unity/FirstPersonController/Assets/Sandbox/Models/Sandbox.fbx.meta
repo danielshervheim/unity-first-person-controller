@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: 3ce4d068d8598422abff5977a8386e25
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: beams1
+    100002: beams2
+    100004: beams3
+    100006: roof
+    100008: //RootNode
+    100010: stairs1
+    100012: stairs2
+    100014: stairs3
+    100016: stairs4
+    100018: structure
+    100020: Sun
+    100022: walls1
+    100024: walls2
+    100026: walls3
+    100028: water1
+    100030: water2
+    400000: beams1
+    400002: beams2
+    400004: beams3
+    400006: roof
+    400008: //RootNode
+    400010: stairs1
+    400012: stairs2
+    400014: stairs3
+    400016: stairs4
+    400018: structure
+    400020: Sun
+    400022: walls1
+    400024: walls2
+    400026: walls3
+    400028: water1
+    400030: water2
+    2100000: walls
+    2100002: floor
+    2100004: water
+    2100006: boards
+    2100008: No Name
+    2300000: beams1
+    2300002: beams2
+    2300004: beams3
+    2300006: roof
+    2300008: stairs1
+    2300010: stairs2
+    2300012: stairs3
+    2300014: stairs4
+    2300016: structure
+    2300018: walls1
+    2300020: walls2
+    2300022: walls3
+    2300024: water1
+    2300026: water2
+    3300000: beams1
+    3300002: beams2
+    3300004: beams3
+    3300006: roof
+    3300008: stairs1
+    3300010: stairs2
+    3300012: stairs3
+    3300014: stairs4
+    3300016: structure
+    3300018: walls1
+    3300020: walls2
+    3300022: walls3
+    3300024: water1
+    3300026: water2
+    4300000: structure
+    4300002: stairs3
+    4300004: stairs2
+    4300006: stairs1
+    4300008: stairs4
+    4300010: roof
+    4300012: walls1
+    4300014: water1
+    4300016: beams2
+    4300018: beams1
+    4300020: walls2
+    4300022: walls3
+    4300024: water2
+    4300026: beams3
+    6400000: beams1
+    6400002: beams2
+    6400004: beams3
+    6400006: roof
+    6400008: stairs1
+    6400010: stairs2
+    6400012: stairs3
+    6400014: stairs4
+    6400016: structure
+    6400018: walls1
+    6400020: walls2
+    6400022: walls3
+    6400024: water1
+    6400026: water2
+    10800000: Sun
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boards
+    second: {fileID: 2100000, guid: 5ff0198219e4940f4aa3e9a62af87a3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor
+    second: {fileID: 2100000, guid: 6de5ebffd901142648986358c058f971, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: walls
+    second: {fileID: 2100000, guid: fd9908cc83fb4492baa9110294f4e8d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: water
+    second: {fileID: 2100000, guid: d4cb7c91e9a6e4378a4604e12837b234, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
