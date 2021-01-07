@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6894453438276912357}
   - component: {fileID: 450385444453908599}
   - component: {fileID: 4866677888919756089}
+  - component: {fileID: 8432279499048239994}
   m_Layer: 0
   m_Name: FirstPersonPlayerPrefab
   m_TagString: Untagged
@@ -64,46 +65,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 6894453438276912357}
-  moving:
-    horizontalAxisName: Horizontal
-    verticalAxisName: Vertical
-    speed: 5
-  jumping:
-    enabled: 1
-    jumpButtonName: Jump
-    force: 5
-  sprinting:
-    enabled: 1
-    sprintButtonName: Sprint
-    speed: 8
-    timeToFullSprint: 0.2
-    constrainDuration: 0
-    duration: 5
-    coolDownDuration: 2.5
-    modifyFieldOfView: 1
-    fieldOfView: 70
   eyes: {fileID: 4426106828929094460}
-  looking:
-    horizontalAxisName: Mouse X
-    verticalAxisName: Mouse Y
-    speed: 60
-    minimumPitch: -90
-    maximumPitch: 90
-    defaultFieldOfView: 0
-  zooming:
-    enabled: 1
-    zoomButtonName: Zoom
-    fieldOfView: 20
-    timeToFullZoom: 0.2
-  gravity: {x: -0, y: -9.8, z: -0}
-  health:
-    health: 1
-    fallDamage: 1
-    minimumFallHeight: 2
-    fatalFallHeight: 20
-    drowningDamage: 1
-    minimumUnderwaterDuration: 15
-    fatalUnderwaterDuration: 30
+  paused: 0
+  horizontalMovementAxis: Horizontal
+  verticalMovementAxis: Vertical
+  movementSpeed: 5
+  horizontalLookAxis: Mouse X
+  verticalLookAxis: Mouse Y
+  lookSpeed: 80
+  minimumPitch: -90
+  maximumPitch: 90
+  jumpButton: Jump
+  gravity: -9.8
+  jumpForce: 5
+--- !u!114 &8432279499048239994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271688275496571648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210e5eeae310f4e7e9470616ec9d2bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6030559370365191922
 GameObject:
   m_ObjectHideFlags: 0

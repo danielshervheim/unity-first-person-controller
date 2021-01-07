@@ -9,6 +9,9 @@ namespace DSS.FirstPersonController
         [SerializeField] Transform body = default;
         [SerializeField] Camera eyes = default;
 
+        [Header("Pause")]
+        public bool paused = false;
+
         [Header("Move")]
         [SerializeField] string horizontalMovementAxis = "Horizontal";
         [SerializeField] string verticalMovementAxis = "Vertical";
@@ -43,15 +46,18 @@ namespace DSS.FirstPersonController
         void Update()
         {
             // Compute movement input.
-            Vector3 movementInput = new Vector3(
-                Input.GetAxis(horizontalMovementAxis),
-                0,
-                Input.GetAxis(verticalMovementAxis)
-            );
+            Vector3 movementInput = Vector3.zero;
+            if (!paused) {
+                movementInput = new Vector3(
+                    Input.GetAxis(horizontalMovementAxis),
+                    0,
+                    Input.GetAxis(verticalMovementAxis)
+                );
+            }
             movementInput = Vector3.ClampMagnitude(movementInput, 1f);  // Prevent 1.41 speed at when moving diagonally.
 
             // Update the jump vector.
-            if (controller.isGrounded && Input.GetButton(jumpButton))
+            if (!paused && controller.isGrounded && Input.GetButton(jumpButton))
             {
                 jumpVector = Vector3.up * jumpForce;
             }
@@ -71,8 +77,11 @@ namespace DSS.FirstPersonController
         void LateUpdate()
         {
             // Update the pitch and yaw.
-            yaw += Input.GetAxis(horizontalLookAxis) * lookSpeed * Time.deltaTime;
-            pitch -= Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;
+            if (!paused)
+            {
+                yaw += Input.GetAxis(horizontalLookAxis) * lookSpeed * Time.deltaTime;
+                pitch -= Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;    
+            }
             pitch = Mathf.Clamp(pitch, minimumPitch, maximumPitch);
 
             // Set the rotations based on the pitch and yaw.
