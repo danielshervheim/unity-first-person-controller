@@ -20,3 +20,7 @@
 ## 1.0.4
 
 - Added `ResetRotation()` method.
+
+## 1.0.5
+
+- Fixed yaw with ResetRotation method.
