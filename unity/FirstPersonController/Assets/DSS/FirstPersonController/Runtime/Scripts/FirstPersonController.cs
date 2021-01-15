@@ -29,6 +29,9 @@ namespace DSS.FirstPersonController
         [SerializeField] float gravity = -9.8f;
         [SerializeField] float jumpForce = 5f;
 
+        // Reset
+        Vector3 originalPosition;
+
         // [Header("Swim")]
 
         // [Header("Climb")]
@@ -40,6 +43,7 @@ namespace DSS.FirstPersonController
 
         void Awake()
         {
+            originalPosition = body.position;
             controller = GetComponent<CharacterController>();
         }
 
@@ -87,6 +91,18 @@ namespace DSS.FirstPersonController
             // Set the rotations based on the pitch and yaw.
             eyes.transform.localRotation = Quaternion.Euler(Vector3.right * pitch);
             body.localRotation = Quaternion.Euler(Vector3.up * yaw);
+        }
+
+        public void ResetPosition()
+        {
+            Teleport(originalPosition);
+        }
+
+        public void Teleport(Vector3 newPosition)
+        {
+            controller.enabled = false;
+            body.position = newPosition;
+            controller.enabled = true;
         }
     }
 }

@@ -12,3 +12,7 @@
 ## 1.0.2
 
 - Made the `lookSpeed` and `movementSpeed` variables public.
+
+## 1.0.3
+
+- Added `ResetPosition()` and `Teleport()` method.
