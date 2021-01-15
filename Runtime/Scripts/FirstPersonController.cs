@@ -15,12 +15,12 @@ namespace DSS.FirstPersonController
         [Header("Move")]
         [SerializeField] string horizontalMovementAxis = "Horizontal";
         [SerializeField] string verticalMovementAxis = "Vertical";
-        [SerializeField] float movementSpeed = 5f;
+        public float movementSpeed = 5f;
 
         [Header("Look")]
         [SerializeField] string horizontalLookAxis = "Mouse X";
         [SerializeField] string verticalLookAxis = "Mouse Y";
-        [SerializeField] float lookSpeed = 80f;
+        public float lookSpeed = 80f;
         [SerializeField][Range(-90f, 90f)] float minimumPitch = -90f;
         [SerializeField][Range(-90f, 90f)] float maximumPitch =  90f;
 
@@ -80,7 +80,7 @@ namespace DSS.FirstPersonController
             if (!paused)
             {
                 yaw += Input.GetAxis(horizontalLookAxis) * lookSpeed * Time.deltaTime;
-                pitch -= Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;    
+                pitch -= Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;
             }
             pitch = Mathf.Clamp(pitch, minimumPitch, maximumPitch);
 

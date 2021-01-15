@@ -1,7 +1,7 @@
 {
     "name": "com.dss.firstpersoncontroller",
     "displayName": "First Person Controller",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "unity": "2018.3",
     "description": "A simple first person controller.",
     "keywords": [
