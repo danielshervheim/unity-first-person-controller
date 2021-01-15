@@ -98,6 +98,12 @@ namespace DSS.FirstPersonController
             Teleport(originalPosition);
         }
 
+        public void ResetRotation()
+        {
+            pitch = 0f;
+            yaw = 0f;
+        }
+
         public void Teleport(Vector3 newPosition)
         {
             controller.enabled = false;

@@ -16,3 +16,7 @@
 ## 1.0.3
 
 - Added `ResetPosition()` and `Teleport()` method.
+
+## 1.0.4
+
+- Added `ResetRotation()` method.
