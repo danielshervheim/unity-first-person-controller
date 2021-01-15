@@ -31,6 +31,7 @@ namespace DSS.FirstPersonController
 
         // Reset
         Vector3 originalPosition;
+        float originalYaw;
 
         // [Header("Swim")]
 
@@ -43,6 +44,8 @@ namespace DSS.FirstPersonController
 
         void Awake()
         {
+            yaw = body.rotation.eulerAngles.y;
+            originalYaw = yaw;
             originalPosition = body.position;
             controller = GetComponent<CharacterController>();
         }
@@ -101,7 +104,7 @@ namespace DSS.FirstPersonController
         public void ResetRotation()
         {
             pitch = 0f;
-            yaw = 0f;
+            yaw = originalYaw;
         }
 
         public void Teleport(Vector3 newPosition)
