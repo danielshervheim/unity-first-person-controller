@@ -1,47 +1,104 @@
 using UnityEngine;
 
-namespace DSS.FirstPersonController
+namespace DSS.PlayerControllers
 {
+    // @brief Implements a simple first-person style character controller.
     [RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] Transform body = default;
-        [SerializeField] Camera eyes = default;
+        [Header("Required References")]
+        [SerializeField] private Transform body = default;
+        [SerializeField] private Camera eyes = default;
 
         [Header("Pause")]
         public bool paused = false;
 
         [Header("Move")]
-        [SerializeField] string horizontalMovementAxis = "Horizontal";
-        [SerializeField] string verticalMovementAxis = "Vertical";
-        public float movementSpeed = 5f;
+        [SerializeField] private string horizontalMovementAxis = "Horizontal";
+        [SerializeField] private string verticalMovementAxis = "Vertical";
+        [SerializeField] private float movementSpeed = 5f;
+        public float MoveSpeed
+        {
+            get
+            {
+                return movementSpeed;
+            }
+            set
+            {
+                movementSpeed = Mathf.Max(0f, value);
+            }
+        }
 
         [Header("Look")]
-        [SerializeField] string horizontalLookAxis = "Mouse X";
-        [SerializeField] string verticalLookAxis = "Mouse Y";
-        // [SerializeField] bool divideByScreenSize = true;
-        public float lookSpeed = 80f;
-        [SerializeField][Range(-90f, 90f)] float minimumPitch = -90f;
-        [SerializeField][Range(-90f, 90f)] float maximumPitch =  90f;
+        [SerializeField] private string horizontalLookAxis = "Mouse X";
+        [SerializeField] private string verticalLookAxis = "Mouse Y";
+        [SerializeField] private float lookSpeed = 80f;
+        public float LookSpeed
+        {
+            get
+            {
+                return lookSpeed;
+            }
+            set
+            {
+                lookSpeed = Mathf.Max(0f, value);
+            }
+        }
+
+        [SerializeField][Range(-90f, 90f)] private float minimumPitch = -90f;
+        [SerializeField][Range(-90f, 90f)] private float maximumPitch =  90f;
 
         [Header("Jump")]
-        [SerializeField] string jumpButton = "Jump";
-        [SerializeField] float gravity = -9.8f;
-        [SerializeField] float jumpForce = 5f;
+        [SerializeField] private string jumpButton = "Jump";
+        [SerializeField] private float gravity = -9.8f;
+        [SerializeField] private float jumpForce = 5f;
+        public float JumpForce
+        {
+            get
+            {
+                return jumpForce;
+            }
+            set
+            {
+                jumpForce = Mathf.Max(0f, jumpForce);
+            }
+        }
 
-        // Reset
-        Vector3 originalPosition;
-        float originalYaw;
+        private Vector3 originalPosition;
+        private float originalYaw;
 
-        // [Header("Swim")]
+        private CharacterController controller;
+        private float pitch = 0f;
+        private float yaw = 0f;
+        private Vector3 jumpVector = Vector3.zero;
 
-        // [Header("Climb")]
+        // @brief Moves the player back to the position they were when the scene loaded.
+        public void ResetPosition()
+        {
+            Teleport(originalPosition);
+        }
 
-        CharacterController controller;
-        float pitch = 0f;
-        float yaw = 0f;
-        Vector3 jumpVector = Vector3.zero;
+        // @brief Rotates the player's camera to the direction it was facing when the scene loaded.
+        public void ResetRotation()
+        {
+            pitch = 0f;
+            yaw = originalYaw;
+        }
+
+        // @brief Moves the player to the given position.
+        public void Teleport(Vector3 newPosition)
+        {
+            controller.enabled = false;
+            body.position = newPosition;
+            controller.enabled = true;
+        }
+
+        // // TODO: implement this.
+        // @brief Rotates the player's camera to face the given target.
+        // public void LookAt(Vector3 lookTarget)
+        // {
+        // 
+        // }
 
         void Awake()
         {
@@ -62,7 +119,7 @@ namespace DSS.FirstPersonController
                     Input.GetAxis(verticalMovementAxis)
                 );
             }
-            movementInput = Vector3.ClampMagnitude(movementInput, 1f);  // Prevent 1.41 speed at when moving diagonally.
+            movementInput = Vector3.ClampMagnitude(movementInput, 1f);  // Prevents 1.41 speed at when moving diagonally.
 
             // Update the jump vector.
             if (!paused && controller.isGrounded && Input.GetButton(jumpButton))
@@ -85,43 +142,20 @@ namespace DSS.FirstPersonController
         void LateUpdate()
         {
             // Update the pitch and yaw.
+            float deltaYaw = 0f;
+            float deltaPitch = 0f;
             if (!paused)
             {
-                float deltaYaw = Input.GetAxis(horizontalLookAxis) * lookSpeed * Time.deltaTime;
-                float deltaPitch = Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;
-
-                // if (divideByScreenSize)
-                // {
-                //     deltaYaw /= (float)Screen.width;
-                //     deltaPitch /= (float)Screen.height;
-                // }
-
-                yaw += deltaYaw;
-                pitch -= deltaPitch;
+                deltaYaw = Input.GetAxis(horizontalLookAxis) * lookSpeed * Time.deltaTime;
+                deltaPitch = Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;
             }
+            yaw += deltaYaw;
+            pitch -= deltaPitch;
             pitch = Mathf.Clamp(pitch, minimumPitch, maximumPitch);
 
             // Set the rotations based on the pitch and yaw.
             eyes.transform.localRotation = Quaternion.Euler(Vector3.right * pitch);
             body.localRotation = Quaternion.Euler(Vector3.up * yaw);
-        }
-
-        public void ResetPosition()
-        {
-            Teleport(originalPosition);
-        }
-
-        public void ResetRotation()
-        {
-            pitch = 0f;
-            yaw = originalYaw;
-        }
-
-        public void Teleport(Vector3 newPosition)
-        {
-            controller.enabled = false;
-            body.position = newPosition;
-            controller.enabled = true;
         }
     }
 }

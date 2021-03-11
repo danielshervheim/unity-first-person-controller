@@ -1,20 +1,17 @@
 using UnityEngine;
 
-namespace DSS.FirstPersonController
+namespace DSS.PlayerControllers
 {
-    [RequireComponent(typeof(FirstPersonController))]
+    // @brief Locks the cursor while the script is "paused", and unlocks it
+    // when the script is "unpaused".
     public class CursorController : MonoBehaviour
     {
-        FirstPersonController player;
-
-        void Awake()
-        {
-            player = GetComponent<FirstPersonController>();
-        }
+        [Header("Pause")]
+        public bool paused = false;
 
         void Update()
         {
-            if (player.paused)
+            if (paused)
             {
                 if (Cursor.lockState != CursorLockMode.None)
                 {
