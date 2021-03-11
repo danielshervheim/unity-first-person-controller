@@ -1,0 +1,22 @@
+{
+    "author": {
+      "name" : "Daniel Shervheim",
+      "email" : "danielshervheim@gmail.com",
+      "url" : "https://www.danielshervheim.com/"
+    },
+    "description": "A simple and extensible first person controller.",
+    "displayName": "First Person Controller",
+    "keywords": [
+      "unity",
+      "fps",
+      "controller",
+      "player",
+      "first-person controller"
+    ],
+    "license": "BSD-3-Clause",
+    "name": "com.dss.first-person-controller",
+    "repository": "github:danielshervheim/unity-first-person-controller",
+    "unity": "2018.3",
+    "version": "1.0.5",
+    "hideInEditor": false
+}

@@ -20,6 +20,7 @@ namespace DSS.FirstPersonController
         [Header("Look")]
         [SerializeField] string horizontalLookAxis = "Mouse X";
         [SerializeField] string verticalLookAxis = "Mouse Y";
+        // [SerializeField] bool divideByScreenSize = true;
         public float lookSpeed = 80f;
         [SerializeField][Range(-90f, 90f)] float minimumPitch = -90f;
         [SerializeField][Range(-90f, 90f)] float maximumPitch =  90f;
@@ -86,8 +87,17 @@ namespace DSS.FirstPersonController
             // Update the pitch and yaw.
             if (!paused)
             {
-                yaw += Input.GetAxis(horizontalLookAxis) * lookSpeed * Time.deltaTime;
-                pitch -= Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;
+                float deltaYaw = Input.GetAxis(horizontalLookAxis) * lookSpeed * Time.deltaTime;
+                float deltaPitch = Input.GetAxis(verticalLookAxis) * lookSpeed * Time.deltaTime;
+
+                // if (divideByScreenSize)
+                // {
+                //     deltaYaw /= (float)Screen.width;
+                //     deltaPitch /= (float)Screen.height;
+                // }
+
+                yaw += deltaYaw;
+                pitch -= deltaPitch;
             }
             pitch = Mathf.Clamp(pitch, minimumPitch, maximumPitch);
 
