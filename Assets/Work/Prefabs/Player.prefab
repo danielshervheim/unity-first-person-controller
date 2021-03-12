@@ -63,8 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc969bd54081a4ff9864d915d3b21f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  input: {fileID: 0}
+  controller: {fileID: 11400000, guid: ff1cd536bf454459a80321b24b998ba9, type: 2}
+  input: {fileID: 11400000, guid: 17503aef97c9449b7923315afd20c27c, type: 2}
   playerRoot: {fileID: 5682321978038348771}
   playerHead: {fileID: 5991536604865896321}
   playerEyes: {fileID: 6213794061454605793}
