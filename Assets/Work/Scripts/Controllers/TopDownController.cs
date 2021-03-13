@@ -2,17 +2,18 @@ using UnityEngine;
 
 namespace DSS.PlayerControllers
 {
-    [CreateAssetMenu(fileName = "New FirstPerson Controller", menuName = "DSS/Player/Controllers/FirstPerson Controller")]
-    public class FirstPersonController : PlayerController
+    [CreateAssetMenu(fileName = "New TopDown Controller", menuName = "DSS/Player/Controllers/TopDown Controller")]
+    public class TopDownController : PlayerController
     {
         [Header("Pitch Contraints")]
-        [SerializeField] private float minPitch = -90f;
+        [SerializeField] private float minPitch = 0f;
         [SerializeField] private float maxPitch = 90f;
 
-        [Header("Transform Offsets")]
-        [SerializeField] private Vector3 headOffset = Vector3.up*0.75f;
-        [SerializeField] private Vector3 eyeOffset = Vector3.zero;
+        [Header("Zoom Constraints")]
+        [SerializeField] private float minZoom = 10f;
+        [SerializeField] private float maxZoom = 100f;
 
+        private float _zoom = 10f;
 
         public override void UpdatePitch(float verticalLookInput)
         {
@@ -27,7 +28,7 @@ namespace DSS.PlayerControllers
 
         public override Vector3 GetHeadLocalPosition()
         {
-            return headOffset;
+            return Vector3.zero;
         }
 
         public override Quaternion GetHeadLocalRotation()
@@ -37,7 +38,7 @@ namespace DSS.PlayerControllers
 
         public override Vector3 GetEyesLocalPosition()
         {
-            return eyeOffset;
+            return -Vector3.forward*_zoom;
         }
 
         public override Quaternion GetEyesLocalRotation()
