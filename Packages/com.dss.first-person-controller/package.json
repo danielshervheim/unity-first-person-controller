@@ -17,6 +17,6 @@
     "name": "com.dss.first-person-controller",
     "repository": "github:danielshervheim/unity-first-person-controller",
     "unity": "2018.3",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "hideInEditor": false
 }

@@ -24,3 +24,8 @@
 ## 1.0.5
 
 - Fixed yaw with ResetRotation method.
+
+## 1.0.6
+
+- Fixed issue causing fall speed to accumulate over time, resulting in incredibly fast falls.
+- Fixed a bug in the `JumpForce` setter.

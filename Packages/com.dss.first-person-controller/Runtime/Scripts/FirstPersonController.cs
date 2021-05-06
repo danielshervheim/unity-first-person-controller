@@ -51,6 +51,21 @@ namespace DSS.PlayerControllers
         [Header("Jump")]
         [SerializeField] private string jumpButton = "Jump";
         [SerializeField] private float gravity = -9.8f;
+        public float Gravity
+        {
+            get
+            {
+                return gravity;
+            }
+            set
+            {
+                if (gravity > 0f) {
+                    Debug.LogWarning("Gravity is greater than 0. This is unexpected...");
+                }
+                gravity = value;
+            }
+        }
+
         [SerializeField] private float jumpForce = 5f;
         public float JumpForce
         {
@@ -60,7 +75,19 @@ namespace DSS.PlayerControllers
             }
             set
             {
-                jumpForce = Mathf.Max(0f, jumpForce);
+                jumpForce = Mathf.Max(0f, value);
+            }
+        }
+        [SerializeField] private float terminalVelocity = 9.8f;
+        public float TerminalVelocity
+        {
+            get
+            {
+                return terminalVelocity;
+            }
+            set
+            {
+                terminalVelocity = Mathf.Max(0f, value);
             }
         }
 
@@ -88,6 +115,7 @@ namespace DSS.PlayerControllers
         // @brief Moves the player to the given position.
         public void Teleport(Vector3 newPosition)
         {
+            // Disable controller while moving to avoid hiccups
             controller.enabled = false;
             body.position = newPosition;
             controller.enabled = true;
@@ -100,7 +128,7 @@ namespace DSS.PlayerControllers
         // 
         // }
 
-        void Awake()
+        private void Awake()
         {
             yaw = body.rotation.eulerAngles.y;
             originalYaw = yaw;
@@ -108,7 +136,7 @@ namespace DSS.PlayerControllers
             controller = GetComponent<CharacterController>();
         }
 
-        void Update()
+        private void Update()
         {
             // Compute movement input.
             Vector3 movementInput = Vector3.zero;
@@ -127,7 +155,7 @@ namespace DSS.PlayerControllers
                 jumpVector = Vector3.up * jumpForce;
             }
             jumpVector += gravity*Vector3.up * Time.deltaTime;
-            // TODO: something wrong with this when the player falls of w/o jumping.
+            jumpVector = Vector3.ClampMagnitude(jumpVector, terminalVelocity);
 
             // Compute movement delta vector.
             Vector3 movementDelta = Vector3.zero;
@@ -139,7 +167,7 @@ namespace DSS.PlayerControllers
             controller.Move(movementDelta * Time.deltaTime);
         }
 
-        void LateUpdate()
+        private void LateUpdate()
         {
             // Update the pitch and yaw.
             float deltaYaw = 0f;

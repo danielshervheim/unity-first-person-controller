@@ -72,7 +72,7 @@ MonoBehaviour:
   movementSpeed: 5
   horizontalLookAxis: Mouse X
   verticalLookAxis: Mouse Y
-  lookSpeed: 80
+  lookSpeed: 120
   minimumPitch: -90
   maximumPitch: 90
   jumpButton: Jump
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210e5eeae310f4e7e9470616ec9d2bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
 --- !u!1 &6030559370365191922
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,9 +135,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
