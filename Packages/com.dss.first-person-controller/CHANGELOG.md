@@ -29,3 +29,7 @@
 
 - Fixed issue causing fall speed to accumulate over time, resulting in incredibly fast falls.
 - Fixed a bug in the `JumpForce` setter.
+
+## 1.0.7
+
+- Exposed `Eyes` and `Body` properties on FirstPersonController

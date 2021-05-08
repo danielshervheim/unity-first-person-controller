@@ -8,7 +8,17 @@ namespace DSS.PlayerControllers
     {
         [Header("Required References")]
         [SerializeField] private Transform body = default;
+        public Transform Body {
+            get {
+                return body;
+            }
+        }
         [SerializeField] private Camera eyes = default;
+        public Camera Eyes {
+            get {
+                return eyes;
+            }
+        }
 
         [Header("Pause")]
         public bool paused = false;
